@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лыжероллерные трассы Пермского края</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+
+
+<body>
+    <header>
+        <h1 style="font-family: Verdana, Geneva, Tahoma, sans-serif;" > ЛЫЖЕРОЛЛЕРНЫЕ ТРАССЫ ПЕРМСКОГО КРАЯ</h1>
+        <nav>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#berizniki">Березники</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#dobryanka">Добрянка</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#kultaevo">Култаево</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#perm">Пермь</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#usolie">Усолье</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#chaikovsky">Чайковский</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#chernushka">Чернушка</button>
+            <button style="font-family: Verdana, Geneva, Tahoma, sans-serif;" class="toggle-section" data-target="#chusovoy">Чусовой</button>
+        </nav>
+    </header>
+
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Картинка и кнопка</title>
+    <style>
+        #image {
+            display: block;
+            margin: 20px auto;
+            max-width: 70%;
+            height: auto;
+        }
+        #button-container {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="button-container">
+        <button onclick="hideImage()">Скрыть карту</button>
+        <button onclick="showImage()">Показать карту</button>
+    </div>
+    <img id="image" src="/трассы/Готовое/Состояние трасс.jpg" alt="Состояние трасс">
+    
+    <script>
+        function hideImage() {
+            document.getElementById('image').style.display = 'none';
+        }
+
+        function showImage() {
+            document.getElementById('image').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
+
+
+    <main>
+        <div id="berizniki" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Березники</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;"> Лыжная база «Летающий лыжник» — это спортивный комплекс, объединяющий несколько направлений: лыжные гонки, триатлон, велоспорт и лыжное двоеборье. База расположена в районе деревни Новожилово в 5 км центра города и в 183 км от г. Перми.</p>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Спортивный комплекс оснащен освещённой лыжной трассой, что позволяет проводить тренировки и соревнования в вечернее время. Лыжероллерная трасса оснащена современным покрытием и предназначена для летних тренировок на лыжероллерах. Трасса имеет протяженность 2 км со срезками, что позволяет варьировать длину. Имеется широкая стартовая и финишная зона. Для тренировок трасса подойдет как для начинающих спортсменов, так и для профессионалов. База предоставляет услуги проката зимнего инвентаря (лыжи, коньки, тюбинги) и летнего (велосипеды, лыжероллеры, роликовые коньки, самокаты). На территории трассы ежегодно в летний период проводятся лыжероллерные старты.</p>
+            <center><img width="70%" src="/трассы/Готовое/Березники.jpg" alt="Трасса в Березниках"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Березники.png" alt="Калории в Березниках"></center>
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршруты Пермь - Березники</h1>
+
+    <div class="map-container" id="map-berizniki"></div>
+
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-berizniki', coords: [58.0255, 56.3005] }, // Березники
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <!-- Повторите блоки для других трасс -->
+        <div id="dobryanka" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Добрянка</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжная база и лыжероллерная трасса в Добрянке представлены в первую очередь биатлонным комплексом, который является основным спортивным объектом для зимних и летних видов спорта в городе. Биатлонный комплекс расположен по адресу ул. Комсомольская, 90, в 3 км от центра города и 70 км от г. Перми.</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Это открытый спортивный объект, оснащённый лыжными трассами для классического и конькового хода, а также стрельбищем для биатлона. На базе доступен прокат лыжного инвентаря. В летний и зимний периоды на территории комплекса устраивают спортивные сборы для спортсменов. Лыжникам предоставляют комфортные условия для проживания на самой базе. Лыжероллерная трасса доступна как для новичков, так и для профессионалов. Длина трассы составляет 1,5 км с одной срезкой. Однако проведение тренировок на данной трассе может привести к неким травмам из-за старого асфальтового покрытия, которое требует реконструкции. </p>
+            <center><img width="70%" src="/трассы/Готовое/Добрянка.jpg" alt="Трасса в Добрянке"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Добрянка.png" alt="Калории в Добрянке"></center> 
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь - Добрянка</h1>
+    <div class="map-container" id="map-dobryanka"></div>
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-dobryanka', coords: [58.0294, 56.3925] }, // Добрянка
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <div id="kultaevo" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Култаево</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжная база «Шиловские горки» представляет собой современный спортивный комплекс, ориентированный на круглогодичные занятия лыжным спортом. Комплекс расположен в Шиловском лесу в 3 км от центра села и в 26 км от г. Пермь. </p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Спортивная база включает в себя лыжную трассу длиной до 5 км и лыжероллерную трассу длиной до 3 км с асфальтовым покрытием с множеством срезок. Трасса предназначена для более профессиональных спортсменов, из-за крутых спусков с резкими поворотами. База оснащена современным модульным зданием, построенным в 2020 году в рамках программы «Пермский край, вставай на лыжи!». В здании есть раздевалки со шкафчиками, душевые, тренерская комната, комната для проката лыж и гараж для снегоходов. Для подготовки трасс используются снегоходы, закупленные за счёт средств краевого бюджета, что обеспечивает качественное обслуживание и поддержание трасс в хорошем состоянии. Лыжероллерная трасса оборудована освещением, что позволяет проводить тренировки и соревнования в вечернее время. На базе можно взять напрокат инвентарь для зимних видов спорта (лыжи, коньки, тюбинги) и летних (лыжероллеры, роликовые коньки, велосипеды, самокаты). </p>
+            <center><img width="70%" src="/трассы/Готовое/Култаево.jpg" alt="Трасса в Култаево"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Култаево.png" alt="Калории в Култаево"></center> 
+       <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь - Култаево</h1>
+    <div class="map-container" id="map-kultaevo"></div>
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-kultaevo', coords: [58.0915, 56.3086] }, // Култаево
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <div id="perm" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Пермь</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжероллерная трасса находится и в самой Перми. Она расположенна в Студенческом городке Пермского национального исследовательского политехнического университета (ПНИПУ).</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Трасса предназначена для лыжников, велосипедистов, любителей бега и пеших прогулок. Её длина составляет около 2,5 км. Летом используется для катания на роликах, а зимой превращается в лыжную трассу. Помимо трассы, рядом расположены освещенные места для прогулок, спортивные площадки, бассейн ПНИПУ и конный комплекс. К сожалению, из-за легкой доступности к трассе проведение тренировок может стать небезопасным, из-за гуляющих людей. Покрытие лыжероллерной трассы весьма старое, что может привести к травмам спортсменов.  </p>
+            <center><img width="70%" src="/трассы/Готовое/Пермь.jpg" alt="Трасса в Перми"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Пермь.png" alt="Калории в Пермь"></center> 
+         <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь</h1>
+
+    <div class="map-container" id="map-berizniki"></div>
+
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-berizniki', coords: [58.053241, 56.209004] }, // Пермь
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+        </div>
+
+        <div id="usolie" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Усолье</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжная база «Стрижи» находится в 2 км от города Усолье и  200 км от города Перми.</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжероллерная трасса представляет собой современный спортивный объект с асфальтовым покрытием длиной 2,5 км, полностью оснащённый освещением по всей длине, что позволяет проводить тренировки и соревнования в любое время суток. Трассу могут посетить как новички, так и профессионалы.  Лыжероллерка оборудована большим стартовым стадионом и биатлонным стрельбищем на 20 рубежей, что делает её комплексом для лыжных гонок и биатлона. Лыжная база является основным спортивным центром Усолья, где проводятся массовые лыжные мероприятия и соревнования, включая традиционные лыжные пробеги и биатлонные старты. Здесь активно развивается школа биатлона, которая показывает хорошие спортивные результаты на региональных соревнованиях.   </p>
+            <center><img width="70%" src="/трассы/Готовое/Усолье.jpg" alt="Трасса в Усолье"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Усолье.png" alt="Калории в Усолье"></center> 
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь - Усолье</h1>
+    <div class="map-container" id="map-usolie"></div>
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-usolie', coords: [58.0413, 56.2172] }, // Усолье   
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <div id="chaikovsky" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Чайковский</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжероллерная трасса «Снежинка» в городе Чайковский — это часть Федерального центра подготовки по зимним видам спорта, открытого в 2012 году и соответствующего самым высоким международным стандартам. Она находится в 9 км от города Чайковский и в 272 км от города Перми.</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Длина трассы составляет около 4–5 км с высококачественным асфальтобетонным покрытием, подходящим для тренировок на лыжероллерах и проведения летних сборов. Рельеф трассы сильно пересечённый, без равнинных участков, с многочисленными виражами, поворотами на 90 и 180 градусов, а также контрсклонами, обеспечивающими безопасность на спусках при высокой скорости (до 60 км/ч). Ширина покрытия — около 6 метров, по обочинам проложены беговые дорожки с покрытием из тартана. Трасса полностью оснащена искусственным освещением, что позволяет тренироваться в темное время суток. Имеется система искусственного оснежения, что позволяет открывать лыжный сезон даже при недостатке естественного снега. Рядом находится лыжная база с раздевалками, прокатом инвентаря, лыжным магазином и сервисом. В состав комплекса входит современное биатлонное стрельбище на 30 спортсменов с высокотехнологичным оборудованием, позволяющим проводить тренировки и соревнования высокого уровня, в том числе для паралимпийцев. Трасса компактно расположена в сосновом бору, что создаёт комфортные природные условия для тренировок и соревнований.</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Центр «Снежинка» является одним из лучших в России по техническому оснащению и инфраструктуре и регулярно принимает всероссийские и международные соревнования.</p>
+            <center><img width="70%" src="/трассы/Готовое/Чайковский.jpg" alt="Трасса в Чайковском"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Чайковский.png" alt="Калории в Чайковский"></center> 
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь - Чайковский</h1>
+    <div class="map-container" id="map-chaykovsky"></div>
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-chaykovsky', coords: [57.9697, 56.7124] }, // Чайковский
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <div id="chernushka" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Чернушка</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжероллерная трасса в городе Чернушка расположена на территории лыжной базы «Метелица» в 2 км от центра самого города и в 227 км от Перми.</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Длина трассы составляет около 1,5 км с хорошим асфальтовым покрытием, что обеспечивает комфортные условия для тренировок и занятий лыжероллерным спортом. Из-за малых перепадов высот трасса подходит и для любителей лыжероллерного спорта и для профессионалов. На базе «Метелица» также есть две лыжные трассы длиной 0,5 и 1,5 км. Для спортсменов и посетителей работает прокат инвентаря, включая лыжероллеры и лыжное снаряжение, а также имеются помещения для переодевания и хранения экипировки. Лыжероллерная трасса входит в программу развития спортивной инфраструктуры Пермского края, направленную на создание современных условий для занятий зимними и летними лыжными видами спорта.</p>
+            <center><img width="70%" src="/трассы/Готовое/Чернушка.jpg" alt="Трасса в Чернушке"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Чернушка.png" alt="Калории в Чернушка"></center> 
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь - Чернушка</h1>
+    <div class="map-container" id="map-chernushka"></div>
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-chernushka', coords: [57.4540, 56.0470] }, // Чернушка               
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <div id="chusovoy" class="trail-section">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">Чусовой</h2>
+            <p style="text-indent: 30px; font-family: Verdana, Geneva, Tahoma, sans-serif;">Лыжероллерная трасса в городе Чусовой расположена на лыжной базе «Металлург» в 7 км от центра самого города и 143 км от Перми.</p>
+            <p style="text-indent: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">Протяженность лыжероллерной трассы составляет около 2 км. Трасса оснащена современным асфальтовым покрытием, но в некоторых местах могут проявляться щели, так что при проведении тренировок и соревнований, нужно быть особо внимательным. На трассе могут заниматься более подготовленные спортсмены. Имеется освещённый участок, что позволяет проводить занятия в тёмное время суток. Инфраструктура базы включает в себя вакс-кабинки для подготовки и хранения лыжного инвентаря, модульное здание, прокат лыжного снаряжения и уличную тренажёрную площадку. Трасса используется для подготовки спортсменов по лыжным гонкам и лыжероллерам, а также для массовых тренировок и спортивных мероприятий. </p>
+            <center><img width="70%" src="/трассы/Готовое/Чусовой.jpg" alt="Трасса в Чусовом"></center> 
+            <center><img width="30%" src="/трассы/Готовое/калории/кал_Чусовой.png" alt="Калории в Чусовой"></center> 
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Яндекс Карты</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <style>
+        .map-container {
+            width: 100%;
+            height: 500px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Маршрут Пермь - Чусовой</h1>
+    <div class="map-container" id="map-chusovoy"></div>
+
+    <script>
+        // Инициализация карты
+        ymaps.ready(init);
+
+        function init() {
+            // Координаты городов
+            const routes = [
+                { id: 'map-chusovoy', coords: [58.5293, 56.2657] }  // Чусовой
+            ];
+
+            // Инициализация каждой карты в массиве
+            routes.forEach(function(route) {
+                var map = new ymaps.Map(route.id, {
+                    center: [58.0105, 56.2502], // Координаты Перми
+                    zoom: 10
+                });
+
+                // Создание маршрута
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        [58.0105, 56.2502], // Пермь
+                        route.coords // Координаты целевого города
+                    ],
+                    params: {
+                        results: 1
+                    }
+                }, {
+                    boundsAutoApply: true // Автоматически подгонять границы карты под маршрут
+                });
+
+                // Добавляем маршрут на карту
+                map.geoObjects.add(multiRoute);
+
+                // Обработка ошибок маршрута
+                multiRoute.events.add('error', function (e) {
+                    console.log('Ошибка при построении маршрута:', e.get('error').message);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
+        </div>
+
+        <!-- Другие трассы аналогично -->
+
+        <div id="developer-info" style="display:none;">
+            <p>Автор сайта: Усталова Дарья Глебовна, студентка группы ГИС-1,2-2021 </p>
+        </div>
+
+        <button id="info-button">Информация о разработчике</button>
+    </main>
+
+    <footer>
+        <p>&copy; ПГНИУ, 2025</p>
+    </footer>
+</body>
+</html>
